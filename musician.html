@@ -5,6 +5,36 @@
  </head>
 <body>
     <h1>Musician guess by BHARATH KUMAR REDDY MOPURU</h1>
+    <form>
+    <label for="smusician_name">Enter the secret musician name</label>
+    <input type="password" id="smusician_name" name="smusician_name" value="John Lennon" autofocus><br>
+    <label for="musician_name">Guess the musician</label>
+    <input type="text" id="musician_name" name="musician_name"><br>
+    <input type="button" value="Check the guess" onclick="checkGuess()">
+    <p id="result1">Your Guess is ....</p>
+    </form>
+    
+    <script>
+        correct = 0
+        wrong = 0
+        function checkGuess(){
+            console.log("Check the guess")
+            sname = document.getElementById("smusician_name").value
+            name = document.getElementById("musician_name").value
+            confirmed = confirm("is this guess FINAL then click OK else click cancle")
+
+            out = document.getElementById("result1")
+            if(sname==name){
+                confirmed = confirm("You got it right")
+                correct += 1
+            }else{
+                confirmed = confirm("Wrong Musician")
+                wrong += 1
+            }
+            out.innerHTML = "correct"+correct+" wrong"+wrong
+        }
+    </script>
+
 
 <h2>Getting input</h2>
 
