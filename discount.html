@@ -59,6 +59,37 @@ function resolveForm (){
           
           out.innerHTML = "Discounted amounts for base " +base+ " are "+result}
 </script>
-
+<form>
+    <input type="radio" id="tim" name="m" value="times"  onclick="chooseOp()" 
+          checked >
+        <label for="tim">*</label></br>
+      
+        <input type="radio" id="div" name="m" onclick="chooseOp()" 
+           value="divide">
+        <label for="div">/</label></br>
+      
+        <input type="radio" id="expo" name="m"   onclick="chooseOp()" 
+           value="exponent">
+        <label for="expo">**</label></br>
+    <input type="button" onclick="chooseOp()" value="Get values from radio group">
+ </form>
+  <p id="result2">Answer is  </p>
+  <script>
+    function chooseOp() {
+      console.log("Getting input")
+      a = document.getElementById("amount").value
+      b = document.getElementById("percent").value
+      times = document.getElementById("tim").checked
+      divide = document.getElementById("div").checked
+      exponent = document.getElementById("expo").checked
+      confirmed = confirm(times || divide || exponent)
+      out = document.getElementById("result2")
+      if(confirmed==times){  out.innerHTML = a*b}
+          else if(confirmed==divide)
+               out.innerHTML = a/b
+          else if(confirmed == exponent)
+               out.innerHTML = a**b 
+      }</script>
+  </script>
 </body>
 </html> 
