@@ -2,21 +2,37 @@
 <html>
  <head>
     <title>Musician Guess</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
  </head>
 <body>
-    <h1>Musician guess by BHARATH KUMAR REDDY MOPURU</h1>
+    <h1>Musician guess by BHARATH KUMAR REDDY MOPURU</h1><hr>
+    <div class="container mt-5 border border-info p-4">
     <form>
-    <label for="smusician_name">Enter the secret musician name</label>
-    <input type="password" id="smusician_name" name="smusician_name" value="John Lennon" autofocus><br>
-    <label for="musician_name">Guess the musician</label>
-    <input type="text" id="musician_name" name="musician_name"><br>
-    <input type="button" value="Check the guess" onclick="checkGuess()">
+    <div class="row md-3 form-group">
+    <div class="col-6 col-lg-4 col-md-4 col-sm-6"><label for="smusician_name">Enter the secret musician name</label></div>
+    <div class="col-6 col-lg-4 col-md-4 col-sm-6"><input type="password" id="smusician_name" name="smusician_name" value="John Lennon" autofocus></div>
+</div>
+<div class="row md-3 form-group">
+    <div class="col-6 col-lg-4 col-md-4 col-sm-6"><label for="musician_name">Guess the musician</label></div>
+    <div class="col-6 col-lg-4 col-md-4 col-sm-6"><input type="text" id="musician_name" name="musician_name"></div>
+</div>
+<div class="row md-3">
+    <div class="col-12 col-sm-6 col-md-4 col-sm-6"><input type="button" value="Check the guess" onclick="checkGuess()"></div>
+</div>
     <p id="result1">Your Guess is ....</p>
-    </form>
+    </form></div>
     
     <script>
         correct = 0
         wrong = 0
+        a=0
+        
         function checkGuess(){
             console.log("Check the guess")
             sname = document.getElementById("smusician_name").value
@@ -27,14 +43,54 @@
             if(sname==name){
                 confirmed = confirm("You got it right")
                 correct += 1
+                a=0
             }else{
                 confirmed = confirm("Wrong Musician")
                 wrong += 1
+                a+=1
+                if(a%3==0 || a>=4){
+                    document.getElementById("result1").setAttribute("onclick",repo())
+                    repo()
+                }
+                
             }
             out.innerHTML = "correct"+correct+" wrong"+wrong
         }
+        function repo(){
+            alert("Sorry, game over")
+        }
     </script>
 
+
+
+<div class="container border border-info p-3">
+    <img src="Mayfly.jpg" id="pic" alt="Mayfly" height="100" width="100" onclick="swapImage()">
+    
+</div>
+<script>
+    useImage = 1;
+    function swapImage(){
+        switch (useImage){
+            case 1:
+            document.getElementById("pic").src="Mayfly.jpg";
+                useImage=2;
+                break;
+            case 2:
+                document.getElementById("pic").src="Owlfly.jpg";
+                useImage=3;
+                break;
+            case 3:
+            document.getElementById("pic").src="Planthoppers.jpg";
+                useImage=1
+                break;
+            default:
+                src="Mayfly.jpg";
+                useImage=1;
+        }
+    }
+    
+    
+</script>
 
 <h2>Getting input</h2>
 
@@ -66,34 +122,6 @@ function resolveForm (){
         out.innerHTML = "Values were not confirmed"
     }
 }
-</script>
-
-<div>
-    <img src="Mayfly.jpg" id="pic" alt="Mayfly" height="100" width="100" onclick="swapImage()">
-    
-</div>
-<script>
-    useImage = 1;
-    function swapImage(){
-        switch (useImage){
-            case 1:
-            document.getElementById("pic").src="Mayfly.jpg";
-                useImage=2;
-                break;
-            case 2:
-                document.getElementById("pic").src="Owlfly.jpg";
-                useImage=3;
-                break;
-            case 3:
-            document.getElementById("pic").src="Planthoppers.jpg";
-                useImage=1
-                break;
-            default:
-                src="Mayfly.jpg";
-                useImage=1;
-        }
-    }
-    
 </script>
 </body>
 </html> 
